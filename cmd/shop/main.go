@@ -4,8 +4,8 @@ import (
 	"context"
 	logBase "log"
 
-	"github.com/dimoktorr/clean_architecture/internal/app/shop"
-	"github.com/dimoktorr/clean_architecture/internal/app/shop/config"
+	"github.com/dimoktorr/clean_architecture/internal/pkg/app"
+	"github.com/dimoktorr/clean_architecture/internal/pkg/config"
 )
 
 func main() {
@@ -17,17 +17,17 @@ func main() {
 	ctxWithCancel, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	app := shop.NewApp()
+	service := app.NewShopService()
 
-	if err := app.Init(ctxWithCancel, cfg); err != nil {
+	if err := service.Init(ctxWithCancel, cfg); err != nil {
 		logBase.Fatal("start app failed")
 	}
 
-	if err := app.Start(ctxWithCancel); err != nil {
+	if err := service.Start(ctxWithCancel); err != nil {
 		logBase.Fatal("start app failed")
 	}
 
-	if err := app.Stop(ctxWithCancel); err != nil {
+	if err := service.Stop(ctxWithCancel); err != nil {
 		logBase.Fatalf("stop app failed")
 	}
 }
