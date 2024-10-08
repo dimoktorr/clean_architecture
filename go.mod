@@ -2,7 +2,10 @@ module github.com/dimoktorr/clean_architecture
 
 go 1.23.1
 
-require github.com/jackc/pgx/v5 v5.7.1
+require (
+	github.com/jackc/pgx/v5 v5.7.1
+	go.uber.org/mock v0.4.0
+)
 
 require (
 	github.com/jackc/pgpassfile v1.0.0 // indirect
