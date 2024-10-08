@@ -17,8 +17,9 @@ func NewRepository(pgx *pgxpool.Pool) *Repository {
 }
 
 func (r Repository) Get(ctx context.Context, id int32) (*models.Product, error) {
-	//TODO implement me
-	panic("implement me")
+	var product Product
+
+	return toModelsProduct(product), nil
 }
 
 func (r Repository) List(ctx context.Context) (models.Products, error) {
